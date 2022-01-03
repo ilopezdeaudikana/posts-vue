@@ -25,7 +25,7 @@ export default createStore({
   getters: {
     mergedPosts(state: State) {
       const othersPosts = state.posts.filter(
-        (post: PostFromApi) => post.userId !== state.user.id
+        (post: PostFromApi) => post.userId !== state.user.id,
       );
       return othersPosts.map((post: PostFromApi) => {
         const user = state.users.find((user: User) => user.id === post.userId);
@@ -34,7 +34,7 @@ export default createStore({
     },
     myPosts(state: State) {
       return state.posts.filter(
-        (post: PostFromApi) => post.userId === state.user.id
+        (post: PostFromApi) => post.userId === state.user.id,
       );
     },
   },

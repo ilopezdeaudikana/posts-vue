@@ -11,7 +11,7 @@ export const router = createRouter({
       path: '/posts',
       component: Posts,
       children: [
-        { path: '/posts/mine', component: Mine,  name: 'mine', },
+        { path: '/posts/mine', component: Mine, name: 'mine' },
         { path: '/posts/others', component: Others },
       ],
     },

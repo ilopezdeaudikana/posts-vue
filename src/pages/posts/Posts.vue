@@ -11,16 +11,16 @@
 </template>
 
 <script lang="ts">
-
+import { defineComponent } from 'vue';
 import usePosts from '../../hooks/usePosts';
 import usePrivate from '../../hooks/usePrivate';
 
-export default {
+export default defineComponent({
   setup() {
     usePrivate();
     usePosts();
   },
-};
+});
 </script>
 <style lang="scss" module>
 @import './posts.scss';

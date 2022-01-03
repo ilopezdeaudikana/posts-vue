@@ -1,4 +1,4 @@
-import { Post, User, PostFromApi } from '../../models/models';
+import { Post, User, PostFromApi, Action } from '../../models/models';
 
 export enum PostsAppActions {
   SET_POSTS = '[PostsAppActions] Set posts',
@@ -12,42 +12,42 @@ export enum PostsAppActions {
   AUTH_FAILURE = '[PostsAppActions] Unable to log in',
 }
 
-export const SetUsers = (users: User[]) => ({
+export const SetUsers = (users: User[]): Action => ({
   type: PostsAppActions.SET_USERS,
   payload: users,
 });
 
-export const SetPosts = (posts: Post[]) => ({
+export const SetPosts = (posts: Post[]): Action => ({
   type: PostsAppActions.SET_POSTS,
   payload: posts,
 });
 
-export const CreatePost = (post: PostFromApi) => ({
+export const CreatePost = (post: PostFromApi): Action => ({
   type: PostsAppActions.CREATE_POST,
   payload: post,
 });
 
-export const SetUser = (user: User) => ({
+export const SetUser = (user: User): Action => ({
   type: PostsAppActions.SET_USER,
   payload: user,
 });
 
-export const AuthSuccess = (user: User) => ({
+export const AuthSuccess = (user: User): Action => ({
   type: PostsAppActions.AUTH_SUCCESS,
   payload: user,
 });
 
-export const AuthFailure = () => ({
+export const AuthFailure = (): Action => ({
   type: PostsAppActions.AUTH_FAILURE,
   payload: null,
 });
 
-export const FetchPosts = () => ({
+export const FetchPosts = (): Action => ({
   type: PostsAppActions.FETCH_POSTS,
   payload: null,
 });
 
-export const FetchUsers = () => ({
+export const FetchUsers = (): Action => ({
   type: PostsAppActions.FETCH_USERS,
   payload: null,
 });
@@ -55,7 +55,7 @@ export const FetchUsers = () => ({
 export const FetchUser = (obj: {
   email: string;
   history: { push: (path: string) => void };
-}) => ({
+}): Action => ({
   type: PostsAppActions.FETCH_USER,
   payload: obj,
 });

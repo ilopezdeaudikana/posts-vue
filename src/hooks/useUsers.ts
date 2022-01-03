@@ -5,7 +5,7 @@ import { getUsers } from '../api/api';
 import { onMounted } from 'vue';
 import { useStore } from 'vuex';
 
-export default function useUsers() {
+export default function useUsers(): void {
   const store = useStore();
   const getUsersFromApi = async () => {
     if (!store.state.users.length) {

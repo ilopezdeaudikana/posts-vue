@@ -6,14 +6,14 @@
 </template>
 
 <script lang="ts">
-import { computed, onMounted, ref } from 'vue';
+import { computed, defineComponent, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 import usePrivate from '../../../hooks/usePrivate';
 import useUsers from '../../../hooks/useUsers';
 import Card from '../../../shared/card/Card.vue';
 import NewPost from '../new/NewPost.vue';
 
-export default {
+export default defineComponent({
   setup() {
     usePrivate();
     const store = useStore();
@@ -31,5 +31,5 @@ export default {
     card: Card,
     'new-post': NewPost,
   },
-};
+});
 </script>

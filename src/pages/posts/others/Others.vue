@@ -5,13 +5,13 @@
 </template>
 
 <script lang="ts">
-import { computed } from 'vue';
+import { computed, defineComponent } from 'vue';
 import { useStore } from 'vuex';
 import useUsers from '../../../hooks/useUsers';
 import usePrivate from '../../../hooks/usePrivate';
 import Card from '../../../shared/card/Card.vue';
 
-export default {
+export default defineComponent({
   setup() {
     usePrivate();
     const store = useStore();
@@ -20,8 +20,8 @@ export default {
       posts: computed(() => store.getters.mergedPosts),
     };
   },
-  components:{
-    card: Card
-  }
-};
+  components: {
+    card: Card,
+  },
+});
 </script>

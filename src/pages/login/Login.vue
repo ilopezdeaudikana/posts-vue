@@ -31,7 +31,7 @@ import { getUser } from '../../api/api';
 import { SetUser, SetUsers } from '../../store/actions/actions';
 
 export default defineComponent({
-  setup () {
+  setup() {
     const store = useStore();
     store.dispatch(SetUsers([]));
     store.dispatch(SetUser({} as User));

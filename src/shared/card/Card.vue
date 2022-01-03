@@ -17,16 +17,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.card {
-  margin-bottom: 1.5rem;
-  .regular {
-    font-weight: 300;
-  }
-  .title {
-    font-weight: 700;
-  }
-}
-</style>
-
-
+<style lang="scss" src="./card.scss" scoped></style>
