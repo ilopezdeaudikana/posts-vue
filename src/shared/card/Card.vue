@@ -1,32 +1,21 @@
 <template>
-  <div class="card">
-    <p v-if="post.username" class="username">{{ post.username }}</p>
-    <p class="title">{{ post.title }}</p>
-    <p class="regular">{{ post.body }}</p>
-  </div>
+  <Disclosure v-slot="{ open }">
+    <DisclosureButton class="font-bold m-2">{{ post?.title }}</DisclosureButton>
+    <DisclosurePanel>
+      <div v-show="open">
+      <p v-if="post?.username" id="username" class="font-medium mb-2">{{ post.username }}</p>
+      <p class="font-light">{{ post?.body }}</p>
+    </div>
+    </DisclosurePanel>
+  </Disclosure>
 </template>
 
-<script lang="ts">
-import { PropType } from 'vue';
-import { Post } from '../../models/models';
+<script setup lang="ts">
+import type { PropType } from 'vue'
+import type { Post } from '../../models/models'
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
 
-export default {
-  props: {
-    post: Object as PropType<Post>,
-  },
-};
+defineProps({
+  post: Object as PropType<Post>
+})
 </script>
-
-<style lang="scss" scoped>
-.card {
-  margin-bottom: 1.5rem;
-  .regular {
-    font-weight: 300;
-  }
-  .title {
-    font-weight: 700;
-  }
-}
-</style>
-
-

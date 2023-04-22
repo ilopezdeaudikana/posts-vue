@@ -5,7 +5,7 @@ export interface PostFromApi {
   body: string;
 }
 
-export interface Post extends PostFromApi{
+export interface Post extends PostFromApi {
   username?: string;
 }
 
@@ -28,5 +28,5 @@ export interface TabLink {
 
 export interface Action {
   type: string;
-  payload: any;
+  payload: unknown;
 }

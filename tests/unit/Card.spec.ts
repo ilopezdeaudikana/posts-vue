@@ -1,23 +1,17 @@
 import Card from '../../src/shared/card/Card.vue';
-import { shallowMount } from '@vue/test-utils';
+import { describe, expect, it } from 'vitest'
+import { mount } from '@vue/test-utils';
+import { DisclosurePanel } from '@headlessui/vue'
 
 describe('Card component', () => {
   it('should display all the props', async () => {
-    const component = shallowMount(Card, {
+    const component = mount(Card, {
       props: {
         post: { userId: 1, title: 'title', body: 'body', username: 'username' },
       },
-    }) as any;
-    console.log(component)
-    // expect(component.contains('.username')).toBe(true);
+    });
+    const panel = component.findComponent(DisclosurePanel)
+    expect(panel).toBeDefined
+    expect(component.text()).toBe('title');
   });
-
-  /*it('should not display any username', async () => {
-    const component = shallowMount(Card, {
-      post: { userId: 1, title: 'title', body: 'body', username: '' },
-    }) as any;
-
-    // const username = getByTestId('username');
-    expect(queryByTestId('username')).toBeNull();
-  });*/
 });

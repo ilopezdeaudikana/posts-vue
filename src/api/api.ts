@@ -1,4 +1,4 @@
-import { User, Post } from '../models/models';
+import type { User, Post } from '../models/models';
 
 const server = 'https://jsonplaceholder.typicode.com';
 
