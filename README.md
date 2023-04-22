@@ -1,29 +1,29 @@
-# fresh
+# Posts
+
+This app is the Vue version tech assesment that I was requested to do. 
+
+Check my `posts-react` repository for a more detailed description.
+
+The stack I used for this one is `Vite`, `Vue 3`, `Typescript`, `Vuex`, `Vitest`, `Tailwind Css` and `HeadlessUI`.
 
 ## Project setup
 ```
-yarn install
+npm install
 ```
 
 ### Compiles and hot-reloads for development
 ```
-yarn serve
+npm run dev
+
 ```
 
 ### Compiles and minifies for production
 ```
-yarn build
+npm run build
 ```
 
 ### Run your unit tests
 ```
-yarn test:unit
+npm run test
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
