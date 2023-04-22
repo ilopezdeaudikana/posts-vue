@@ -1,6 +1,6 @@
 # Posts
 
-This app is the Vue version tech assesment that I was requested to do. 
+This app is the Vue version of a tech assesment that I was requested to do. 
 
 Check my `posts-react` repository for a more detailed description.
 
