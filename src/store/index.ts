@@ -1,7 +1,10 @@
 import { createStore } from 'vuex';
-import type { State, User, Action, PostFromApi } from '../models/models';
+import type { State, User, Action, PostFromApi, Post } from '../models/models';
 import { PostsAppActions } from '../store/actions/actions';
 
+interface Context {
+  commit: (action: string, payload: any) => void
+}
 export default createStore({
   state: {
     posts: [],
@@ -9,16 +12,16 @@ export default createStore({
     user: null as unknown as User,
   } as State,
   mutations: {
-    setPosts(state, { items }) {
+    setPosts(state: State, { items } : { items: Post[] }) {
       state.posts = items;
     },
-    createNewPost(state, { item }) {
+    createNewPost(state: State, { item }: { item: Post }) {
       state.posts = state.posts.concat(item);
     },
-    setUsers(state, { items }) {
+    setUsers(state: State, { items }: { items: User[] }) {
       state.users = items;
     },
-    setUser(state, { item }) {
+    setUser(state: State, { item }: { item: User }) {
       state.user = item;
     },
   },
@@ -39,13 +42,13 @@ export default createStore({
     },
   },
   actions: {
-    [PostsAppActions.SET_POSTS]: (context, action: Action) =>
+    [PostsAppActions.SET_POSTS]: (context: Context , action: Action) =>
       context.commit('setPosts', { items: action.payload }),
-    [PostsAppActions.SET_USERS]: (context, action: Action) =>
+    [PostsAppActions.SET_USERS]: (context: Context, action: Action) =>
       context.commit('setUsers', { items: action.payload }),
-    [PostsAppActions.SET_USER]: (context, action: Action) =>
+    [PostsAppActions.SET_USER]: (context: Context, action: Action) =>
       context.commit('setUser', { item: action.payload }),
-    [PostsAppActions.CREATE_POST]: (context, action: Action) =>
+    [PostsAppActions.CREATE_POST]: (context: Context, action: Action) =>
       context.commit('createNewPost', { item: action.payload }),
   },
   modules: {},

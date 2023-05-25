@@ -1,7 +1,9 @@
 <template>
-  <NewPost :userId="userId" />
-  <div v-for="item in posts" :key="item.id">
-    <Card :post="item" />
+  <div class="flex flex-col justify-center">
+    <NewPost :userId="userId" />
+    <div v-for="item in posts" :key="item.id">
+      <Card :post="item" />
+    </div>
   </div>
 </template>
 

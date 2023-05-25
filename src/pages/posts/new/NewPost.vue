@@ -1,10 +1,12 @@
 <template>
-  <button role="button" @click="showForm">Create new Post</button>
-  <form v-show="visible" @submit.prevent="handleSubmit" :class="$style.addPost">
+  <button role="button" @click="showForm" class="bg-blue-500 text-white m-6 p-2 w-48 self-center rounded-full">
+    Create new Post
+  </button>
+  <form v-show="visible" @submit.prevent="handleSubmit" class="flex flex-col self-center">
     <label for="title">Title</label>
-    <input :class="$style.item" v-model="title" placeholder="Title" required />
+    <input class="w-96 m-3 p-3" v-model="title" placeholder="Title" required />
     <textarea
-      :class="$style.item"
+      class="w-96 m-3 p-3"
       v-model="body"
       aria-label="Post body textarea"
       placeholder="Post body"
@@ -14,7 +16,7 @@
     <button
       role="button"
       type="submit"
-      :class="$style.saveButton"
+      class="bg-blue-500 text-white m-6 p-2 w-32 self-center rounded-full"
       :disabled="!title && !body"
     >
       Save Post
@@ -22,38 +24,36 @@
   </form>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import { CreatePost } from '../../../store/actions/actions';
-import { createPost } from '../../../api/api';
+<script setup lang="ts">
+import { CreatePost } from '../../../store/actions/actions'
+import { createPost } from '../../../api/api'
+import { useStore } from 'vuex'
+import { ref } from 'vue'
 
-export default defineComponent({
-  props: {
-    userId: Number,
-  },
-  data() {
-    return {
-      title: '',
-      body: '',
-      visible: false,
-    };
-  },
-  methods: {
-    async handleSubmit() {
-      const { title, body, userId } = this;
-      const post = { title, body, userId: userId || 0 };
-      const response: { id: number } = await createPost({
-        ...post,
-      });
-      this.$store.dispatch(CreatePost({ ...post, ...response }));
-      this.showForm();
-    },
-    showForm() {
-      this.visible = !this.visible;
-    },
-  },
-});
+const props = defineProps({
+  userId: Number
+})
+
+const visible = ref(false)
+const title = ref('')
+const body = ref('')
+const store = useStore()
+
+const handleSubmit = async () => {
+  const post = {
+    title: title.value,
+    body: body.value,
+    userId: props.userId || 0
+  }
+  const response: { id: number } = await createPost({
+    ...post
+  })
+  store.dispatch(CreatePost({ ...post, ...response }))
+  showForm()
+}
+const showForm = () => {
+  visible.value = !visible.value
+}
+
 </script>
-<style lang="scss" module>
-@import './new-post.scss';
-</style>
+
